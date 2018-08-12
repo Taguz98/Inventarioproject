@@ -20,4 +20,6 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('^proveedor/', include('apps.proveedor.urls')),
+    url('^productos/', include('apps.productos.urls')),
+    
 ]

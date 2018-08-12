@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.view.generic import View, CreateView,\
+from django.views.generic import View, CreateView,\
     ListView, UpdateView, DetailView, DeleteView
 
 from django.shortcuts import render, redirect,\
@@ -27,7 +27,7 @@ class IngresarIngreso(CreateView):
     template_name = 'productos/ingreso_form.html'
     succes_url = '/ingresos/'
 
-    def get(self, request, *args, *kwargs):
+    def get(self, request, *args, **kwargs):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
@@ -37,7 +37,7 @@ class IngresarIngreso(CreateView):
                 form = form,
                 formset = DetalleIngresoFormSet))
 
-    def post(self, request, *args, *kwargs):
+    def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         formset = DetalleIngresoFormSet(request.POST)
@@ -50,7 +50,7 @@ class IngresarIngreso(CreateView):
         self.object = form.save()
         formset.instance = self.object
         #Aqui debe ir una funcion que me ingrese
-        #el codigo que le corresponde al producto 
+        #el codigo que le corresponde al producto
         formset.save()
         #Aqui deberia ir una funcio que me actualice
         #mi inventario
@@ -64,7 +64,7 @@ class IngresarIngreso(CreateView):
 
 class Ingresos(ListView):
     model = Ingreso
-    queryset = Ingresos.objects.all()
+    queryset = Ingreso.objects.all()
     template_name = 'productos/ingresos_list.html'
     context_object_name = 'ingresos'
 

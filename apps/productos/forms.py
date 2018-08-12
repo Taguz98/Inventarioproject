@@ -1,5 +1,7 @@
 from django import forms
-from apps.proveedor import Proveedor
+from apps.proveedor.models import Proveedor
+
+from apps.local.models import Local
 
 from .models import *
 #Multiples formularios
@@ -13,7 +15,7 @@ class ProductoForm(forms.ModelForm):
                 'maxlength':50}),
         label='Nombre:')
 
-    descripcion = forms.TextField(widget=forms.TextInput(
+    descripcion = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Descripcion producto',
                 'required': True, 'minlength':5,
                 'maxlength':200}),
@@ -21,7 +23,7 @@ class ProductoForm(forms.ModelForm):
 
     stock_minimo = forms.IntegerField(
         widget=forms.NumberInput(
-        attrs={'placeholder':'Stock minima'}),
+        attrs={'placeholder':'Stock minimo'}),
         label='Cantidad:')
 
     categoria = forms.ModelChoiceField(
@@ -48,11 +50,13 @@ class IngresoForm(forms.ModelForm):
         empty_label='Locales',
         label='Seleciones un local:')
 
-    descripcion = forms.TextField(widget=forms.TextInput(
+    descripcion = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Descripcion ingreso',
-                'minlength':5,'maxlength':200}),
+                'minlength':5,'maxlength':200,
+                'size':70}),
         label='Descripcion:')
 
+#Size es para hacer el input mas grande
     class Meta:
         model = Ingreso
         fields = ('proveedor', 'local')
@@ -89,23 +93,21 @@ class DetalleIngresoForm(forms.ModelForm):
 #Ingreso multiple
 DetalleIngresoFormSet = inlineformset_factory(
                         Ingreso, DetalleIngreso,
-                        extra=5, form=DetalleIngresoForm,
-                        fk_name=id)
+                        extra=5, form=DetalleIngresoForm)
 
 class EnvioForm(forms.ModelForm):
-    local_salida = forms.ModelChoiceField(
-        queryset=Local.objects.all(),
-        widget=forms.Select(),
-        empty_label='Locales',
-        label='Selecione su local de salida:')
+    local_salida = forms.CharField(widget=forms.TextInput(
+        attrs={'required': True, 'minlength':3,
+                'maxlength':50}),
+        label='Local salida:', initial='Local Principal')
 
     local_llegada = forms.ModelChoiceField(
         queryset=Local.objects.all(),
         widget=forms.Select(),
         empty_label='Locales',
-        label='Seleciones su local de llegada:')
+        label='Local llegada:')
 
-    descripcion = forms.TextField(widget=forms.TextInput(
+    descripcion = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Descripcion Envio',
                 'minlength':5,'maxlength':200}),
         label='Descripcion:')
@@ -133,16 +135,15 @@ class DetalleEnvioForm(forms.ModelForm):
 
 DetalleEnvioFormSet = inlineformset_factory(
                       Envio, DetalleEnvio,
-                      extra=4, form=DetalleEnvioForm,
-                      fk_name=id)
+                      extra=4, form=DetalleEnvioForm)
 
 class VentaForm(forms.ModelForm):
     local = forms.ModelChoiceField(
         queryset=Local.objects.all(),
         widget=forms.Select(),
         empty_label='Locales',
-        label='Selecione un local:',
-        initial=Local.objects.get(pk=2))
+        label='Selecione un local:')
+        #initial=Local.objects.get(pk=1)
 
     cedula = forms.CharField(widget=forms.TextInput(
         attrs={'maxlength':10,'minlength':10}),

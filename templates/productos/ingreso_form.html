@@ -21,7 +21,7 @@
 
     <h2>Detalle ingreso</h2>
 
-    {{ formset.management_ form }}
+    {{ formset.management_form }}
 
     <form class=""  method="post">
       {% for form in formset %}
@@ -37,7 +37,9 @@
         {{ form.precio_venta }}
 
         {{ form.precio_descuento }}
-        
+
+        <br>
+
       {% endfor %}
     </form>
 
