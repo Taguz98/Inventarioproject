@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+  Lista Proveedores
+{% endblock %}
+
+{% block main %}
+  <h1>Lista de proveedores</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Cedula</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>RUC</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for proveedor in proveedores %}
+      <tr>
+        <td>{{ proveedor.id }}</td>
+        <td>{{ proveedor.nombre }} {{ proveedor.apellido }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.cedula }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>{{ proveedor.corre }}</td>
+        <td>{{ proveedor.ruc }}</td>
+      </tr>
+      {% endblock %}
+    </tbody>
+  </table>
+{% endblock %}

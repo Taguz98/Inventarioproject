@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+  Lista Ingresos
+{% endblock %}
+
+{% block main %}
+  <h1>Lista de Ingresos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Proveedor</th>
+        <th>Local</th>
+        <th>Descripcion</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for ingreso in ingresos %}
+      <tr>
+        <td>{{ ingreso.proveedor }}</td>
+        <td>{{ ingreso.local }}</td>
+        <td>{{ ingreso.descripcion }}</td>
+        <td>{{ ingreso.fecha }}</td>
+        <td>{{ ingreso.hora }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Lista Cuentas
+{% endblock %}
+
+{% block main %}
+  <h1>Lista de Cuentas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Proveedor</th>
+        <th>Banco</th>
+        <th>Tipo cuenta</th>
+        <th>Numero cuenta</th>
+        <th>Telefono proveedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cuenta in cuentas %}
+      <tr>
+        <td>{{ cuenta.id }}</td>
+        <td>{{ cuenta.proveedor }}</td>
+        <td>{{ cuenta.banco }}</td>
+        <td>{{ cuenta.tipo_cuenta }}</td>
+        <td>{{ cuenta.numero_cuenta }}</td>
+        <td>{{ cuenta.proveedor.telefono }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+  Lista Detalle Ingreso
+{% endblock %}
+
+{% block main %}
+  <table>
+    <thead>
+      <tr>
+        <th>Ingreso</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Compra</th>
+        <th>Precio Venta</th>
+        <th>Precio Descuento</th>
+        <th>Codigo Producto</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for detalle in detalles %}
+      <tr>
+        <td>{{ detalle.id_ingreso }}</td>
+        <td>{{ detalle.producto }}</td>
+        <td>{{ detalle.cantidad }}</td>
+        <td>{{ detalle.precio_compra }}</td>
+        <td>{{ detalle.precio_venta }}</td>
+        <td>{{ detalle.precio_descuento }}</td>
+        <td>{{ detalle.codigo_producto }}</td>
+      </tr>
+      {% endblock %}
+    </tbody>
+  </table>
+{% endblock %}

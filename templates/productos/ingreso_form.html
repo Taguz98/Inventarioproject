@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Ingreso
+{% endblock %}
+
+{% block main %}
+  <form class="" method="post">
+
+    <h1>Ingreso</h1>
+    {% csrf_token %}
+
+    <div class="">
+      {{ form.as_table }}
+    </div>
+
+    <div class="">
+      <input type="submit" value="Ingresar">
+      <a href="/ingresos/">Ingresos</a>
+    </div>
+
+    <h2>Detalle ingreso</h2>
+
+    {{ formset.management_ form }}
+
+    <form class=""  method="post">
+      {% for form in formset %}
+        <!--Aqui podria agregar mesajes de error pero
+            pereza -->
+
+        {{ form.producto }}
+
+        {{ form.cantidad }}
+
+        {{ form.precio_compra }}
+
+        {{ form.precio_venta }}
+
+        {{ form.precio_descuento }}
+        
+      {% endfor %}
+    </form>
+
+  </form>
+{% endblock %}
