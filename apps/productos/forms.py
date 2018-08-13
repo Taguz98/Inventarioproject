@@ -109,7 +109,8 @@ class EnvioForm(forms.ModelForm):
 
     descripcion = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Descripcion Envio',
-                'minlength':5,'maxlength':200}),
+                'minlength':5,'maxlength':200,
+                'size':70}),
         label='Descripcion:')
 
     class Meta:

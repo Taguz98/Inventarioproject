@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+  Venta
+{% endblock %}
+
+{% block main %}
+  <form class=""  method="post">
+    <h1>Venta</h1>
+    {% csrf_token %}
+
+    <div class="">
+      {{ form.as_table }}
+    </div>
+
+    <div class="">
+      <input type="submit" value="Vender">
+      <a href="/ventas/">Ventas</a>
+    </div>
+
+    <h2>Detalle venta</h2>
+    {{ formset.management_form }}
+
+    <form class="" method="post">
+      {% for form in formset %}
+        {{ form.producto }}
+        {{ form.cantidad }}
+        {{ form.precio }}
+        {{ form.total }}
+        <br>
+      {% endfor %}
+    </form>
+  </form>
+{% endblock %}

@@ -17,9 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 
+#Clases para venta
+from apps.productos.views import IngresarVenta, Ventas, DetallesVenta
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('^proveedor/', include('apps.proveedor.urls')),
     url('^productos/', include('apps.productos.urls')),
+
+    #Urls para vender
+    url('^vender/$', IngresarVenta.as_view(), name='Vender'),
+    url('^ventas/$', Ventas.as_view(), name='Ventas'),
+    url('^ventas/detalles/$', DetallesVenta.as_view(), name='Detalles ventas'),
     
 ]
