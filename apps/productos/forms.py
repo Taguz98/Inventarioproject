@@ -30,7 +30,7 @@ class ProductoForm(forms.ModelForm):
         queryset=Categoria.objects.all(),
         widget=forms.Select(),
         empty_label='Categorias',
-        label='Seleciones un categoria:')
+        label='Selecione una categoria:')
 
     class Meta:
         model = Producto
@@ -59,129 +59,44 @@ class IngresoForm(forms.ModelForm):
 #Size es para hacer el input mas grande
     class Meta:
         model = Ingreso
-        fields = ('proveedor', 'local')
+        fields = ('proveedor', 'local', 'descripcion')
 
 class DetalleIngresoForm(forms.ModelForm):
     producto = forms.ModelChoiceField(
         queryset=Producto.objects.all(),
         widget=forms.Select(),
         empty_label='Productos',
-        label='Seleciones un producto:')
+        label='Selecione un producto:')
 
     cantidad = forms.IntegerField(
         widget=forms.NumberInput(
-        attrs={'placeholder':'Cantidad producto'}),
+            attrs={'placeholder':'Cantidad producto'}),
         label='Cantidad:')
 
     precio_compra = forms.DecimalField(
-        max_digits = 5, decimal_places = 2,
-        label='Precio Compra:')
+        widget=forms.NumberInput(
+            attrs={'placeholder':'Precio compra',
+                   'step':'any'}),
+        max_digits = 5, decimal_places = 2)
 
     precio_venta = forms.DecimalField(
-        max_digits = 5, decimal_places = 2,
-        label='Precio Venta:')
+        widget=forms.NumberInput(
+            attrs={'placeholder':'Precio venta',
+                   'step':'any'}),
+        max_digits = 5, decimal_places = 2)
 
     precio_descuento = forms.DecimalField(
-        max_digits = 5, decimal_places = 2,
-        label='Precio Descuento:')
+        widget=forms.NumberInput(
+            attrs={'placeholder':'Precio descuento',
+                   'step':'any'}),
+        max_digits = 5, decimal_places = 2)
 
     class Meta:
         model = DetalleIngreso
-        fields = ('producto', 'cantidad', 'precio_compra',
+        fields = ('producto', 'cantidad','precio_compra',
                   'precio_venta', 'precio_descuento')
 
 #Ingreso multiple
 DetalleIngresoFormSet = inlineformset_factory(
                         Ingreso, DetalleIngreso,
-                        extra=5, form=DetalleIngresoForm)
-
-class EnvioForm(forms.ModelForm):
-    local_salida = forms.CharField(widget=forms.TextInput(
-        attrs={'required': True, 'minlength':3,
-                'maxlength':50}),
-        label='Local salida:', initial='Local Principal')
-
-    local_llegada = forms.ModelChoiceField(
-        queryset=Local.objects.all(),
-        widget=forms.Select(),
-        empty_label='Locales',
-        label='Local llegada:')
-
-    descripcion = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder':'Descripcion Envio',
-                'minlength':5,'maxlength':200,
-                'size':70}),
-        label='Descripcion:')
-
-    class Meta:
-        model = Envio
-        fields = ('local_salida','local_llegada',
-                  'descripcion')
-
-class DetalleEnvioForm(forms.ModelForm):
-    producto = forms.ModelChoiceField(
-        queryset=Producto.objects.all(),
-        widget=forms.Select(),
-        empty_label='Productos',
-        label='Selecione un producto:')
-
-    cantidad = forms.IntegerField(
-        widget=forms.NumberInput(
-        attrs={'placeholder':'Cantidad producto'}),
-        label='Cantidad:')
-
-    class Meta:
-        model = DetalleEnvio
-        fields = ('producto', 'cantidad')
-
-DetalleEnvioFormSet = inlineformset_factory(
-                      Envio, DetalleEnvio,
-                      extra=4, form=DetalleEnvioForm)
-
-class VentaForm(forms.ModelForm):
-    local = forms.ModelChoiceField(
-        queryset=Local.objects.all(),
-        widget=forms.Select(),
-        empty_label='Locales',
-        label='Selecione un local:')
-        #initial=Local.objects.get(pk=1)
-
-    cedula = forms.CharField(widget=forms.TextInput(
-        attrs={'maxlength':10,'minlength':10}),
-        label='Cedula:', initial='9999999999')
-
-    total = forms.DecimalField(widget=forms.NumberInput(
-        attrs={'class':'total-venta', 'step':'any'}),
-        label='Total:', max_digits=5, decimal_places=2)
-
-    class Meta:
-        model = Venta
-        fields=('local','cedula','total')
-
-class DetalleVentaForm(forms.ModelForm):
-    producto = forms.ModelChoiceField(
-        queryset=Producto.objects.all(),
-        widget=forms.Select(),
-        empty_label='Productos',
-        label='Selecione un producto:')
-
-    cantidad = forms.IntegerField(widget=forms.NumberInput(
-        attrs={'class':'cantidad-producto',
-               'placeholder':'Catidad de productos'}),
-        label='Cantidad:')
-
-    precio = forms.DecimalField(widget=forms.NumberInput(
-        attrs={'class':'precio-producto', 'step':'any'}),
-        label='Precio:', max_digits=5, decimal_places=2)
-
-    total = forms.DecimalField(widget=forms.NumberInput(
-        attrs={'class':'total-producto', 'step':'any'}),
-        label='Total:', max_digits=5, decimal_places=2)
-
-    class Meta:
-        model=DetalleVenta
-        fields=('producto','cantidad','precio','total')
-
-DetalleVentaFormSet = inlineformset_factory(
-                      Venta,DetalleVenta,
-                      extra=5,form=DetalleVentaForm)
+                        extra=8, form=DetalleIngresoForm)

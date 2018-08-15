@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vender</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  </head>
+  <body>
+
+    <div class="">
+      <h2>PRODUCTOS</h2>
+      {% if productos %}
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Ubicacion</th>
+            <th>ID</th>
+            <th>CODIGO</th>
+            <th>Producto ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+          <tr>
+            <td>{{ producto.producto }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.ubicacion }}</td>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.producto.codigo }}</td>
+            <td>{{ producto.producto_id }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+
+    <script type="text/javascript">
+
+      $('#Vender').click(function() {
+        console.log("click");
+        codigo=$('#codigo').val();
+
+        console.log(codigo);
+
+      });
+
+    </script>
+
+    <form class=""  method="GET" action="{% url 'finventa' %}">
+      <div class="">
+        <input type="text" name="producto" id="codigo" value="">
+        <input type="submit" id="Vender" value="Vender">
+      </div>
+    </form>
+
+
+
+  </body>
+</html>

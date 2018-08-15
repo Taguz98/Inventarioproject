@@ -9,6 +9,7 @@
   <table>
     <thead>
       <tr>
+        <th>Numero</th>
         <th>Proveedor</th>
         <th>Local</th>
         <th>Descripcion</th>
@@ -20,6 +21,7 @@
     <tbody>
       {% for ingreso in ingresos %}
       <tr>
+        <td>{{ ingreso.id }}</td>
         <td>{{ ingreso.proveedor }}</td>
         <td>{{ ingreso.local }}</td>
         <td>{{ ingreso.descripcion }}</td>

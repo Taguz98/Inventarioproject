@@ -22,8 +22,14 @@
     <h2>Detalle ingreso</h2>
 
     {{ formset.management_form }}
+    <label for="">Selecione un producto:</label>
+    <label for="">Cantidad:</label>
+    <label for="">Precio compra:</label>
+    <label for="">Precio venta:</label>
+    <label for="">Precio descuento:</label>
+    <br>
 
-    <form class=""  method="post">
+
       {% for form in formset %}
         <!--Aqui podria agregar mesajes de error pero
             pereza -->
@@ -41,7 +47,7 @@
         <br>
 
       {% endfor %}
-    </form>
+
 
   </form>
 {% endblock %}

@@ -9,7 +9,7 @@ from .forms import *
 class IngresarProveedor(CreateView):
     model = Proveedor
     form_class = ProveedorForm
-    succes_url = '//'
+    success_url = '/proveedor/'
 
 class Proveedores(ListView):
     model = Proveedor
@@ -19,7 +19,7 @@ class Proveedores(ListView):
 
 class IngresarCuenta(CreateView):
     model = CuentasProveedor
-    succes_url = '//'
+    success_url = '/proveedor/cuentas/'
     fields = ('proveedor', 'banco', 'tipo_cuenta', 'numero_cuenta')
 
 class Cuentas(CreateView):

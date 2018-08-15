@@ -19,7 +19,8 @@ class ProveedorForm(forms.ModelForm):
 
     cedula = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Cedula proveedor',
-                'required': True}),
+                'required': True, 'minlength':10,
+                'maxlength':10}),
         label='Cedula:')
 
     telefono = forms.CharField(widget=forms.TextInput(
@@ -35,7 +36,8 @@ class ProveedorForm(forms.ModelForm):
 
     ruc = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'RUC proveedor',
-                'required': True}),
+                'required': True, 'minlength':13,
+                'maxlength':13}),
         label='RUC:')
 
     class Meta:

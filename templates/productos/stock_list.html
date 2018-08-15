@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+  Stock
+{% endblock %}
+
+{% block main %}
+  <h1>S T O C K</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Venta</th>
+        <th>Precio Descuento</th>
+        <th>Codigo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for stock in stocks %}
+      <tr>
+        <td>{{ stock.producto }}</td>
+        <td>{{ stock.cantidad }}</td>
+        <td>{{ stock.precio_venta }}</td>
+        <td>{{ stock.precio_descuento }}</td>
+        <td>{{ stock.codigo }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

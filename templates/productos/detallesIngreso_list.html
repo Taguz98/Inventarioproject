@@ -7,6 +7,7 @@
   <table>
     <thead>
       <tr>
+        <th>Numero</th>
         <th>Ingreso</th>
         <th>Producto</th>
         <th>Cantidad</th>
@@ -14,12 +15,15 @@
         <th>Precio Venta</th>
         <th>Precio Descuento</th>
         <th>Codigo Producto</th>
+        <th>Local</th>
+        <th>Proveedor</th>
       </tr>
     </thead>
 
     <tbody>
       {% for detalle in detalles %}
       <tr>
+        <td>{{ detalle.id }}</td>
         <td>{{ detalle.id_ingreso }}</td>
         <td>{{ detalle.producto }}</td>
         <td>{{ detalle.cantidad }}</td>
@@ -27,8 +31,10 @@
         <td>{{ detalle.precio_venta }}</td>
         <td>{{ detalle.precio_descuento }}</td>
         <td>{{ detalle.codigo_producto }}</td>
+        <td>{{ detalle.id_ingreso.local }}</td>
+        <td>{{ detalle.id_ingreso.proveedor }}</td>
       </tr>
-      {% endblock %}
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

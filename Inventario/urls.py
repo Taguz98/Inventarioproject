@@ -17,8 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 
-#Clases para venta
-from apps.productos.views import IngresarVenta, Ventas, DetallesVenta
+#Clases para venta y stock
+from apps.productos.views import StockLista
+#Clases de venta
+from apps.ventas.views import IngresarVenta, Ventas, DetallesVenta
+#Clase para consultar el inventario
+from apps.local.views import StockLocales, StockLocalPrincipal, StockLocalTerminal, IngresarStockLocal,\
+    Productos, vender
+
+#Pruebas para vender
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +36,20 @@ urlpatterns = [
     url('^vender/$', IngresarVenta.as_view(), name='Vender'),
     url('^ventas/$', Ventas.as_view(), name='Ventas'),
     url('^ventas/detalles/$', DetallesVenta.as_view(), name='Detalles ventas'),
-    
+
+    #Urls para consultar stock
+    url('^stock/locales/$', StockLocales.as_view(), name='Stock general'),
+    url('^stock/principal/$', StockLocalPrincipal.as_view(), name='Stock local principal'),
+    url('^stock/terminal/$', StockLocalTerminal.as_view(), name='Stock local terminal'),
+    url('^stock/locales/ingresar/$', IngresarStockLocal.as_view(), name='Ingresar stock'),
+
+    #Urls para stock
+    url('^stock/$', StockLista.as_view(), name='Stock'),
+
+    #Prueba Ventas
+    url('^locales/', include('apps.local.urls')),
+    #url('^venta/$', Productos.as_view(), name='venta'),
+    #url('^venta/finventa/$', vender, name='Vender'),
+
+
 ]

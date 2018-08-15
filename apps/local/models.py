@@ -1,5 +1,8 @@
 from django.db import models
 
+#Importanod el stock
+from apps.productos.models import Stock
+
 # Create your models here.
 
 class Local(models.Model):
@@ -16,10 +19,10 @@ class Local(models.Model):
 
 class StockLocal(models.Model):
 	local = models.ForeignKey(Local, on_delete=models.CASCADE)
-	producto = models.ForeignKey('productos.DetalleIngreso', on_delete=models.CASCADE)
+	producto = models.ForeignKey(Stock, on_delete=models.CASCADE)
 	cantidad = models.PositiveIntegerField()
-	precio_venta = models.DecimalField(max_digits=5, decimal_places=2)
-	precio_descuento = models.DecimalField(max_digits=5, decimal_places=2)
+	ubicacion = models.CharField('Ubicacion producto',max_length=50)
 
 	def __str__(self):
-		return self.producto
+		producto = (str(self.producto))
+		return producto
