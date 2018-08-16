@@ -100,3 +100,9 @@ class DetalleIngresoForm(forms.ModelForm):
 DetalleIngresoFormSet = inlineformset_factory(
                         Ingreso, DetalleIngreso,
                         extra=8, form=DetalleIngresoForm)
+
+class EnvioForm(forms.ModelForm):
+    class Meta:
+        model = Envio
+        fields = ('local_envio', 'local_llegada',
+                  'producto', 'cantidad', 'ubicacion')

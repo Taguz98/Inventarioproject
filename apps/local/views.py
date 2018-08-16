@@ -14,15 +14,16 @@ class StockLocales(ListView):
     template_name = 'local/stockLocales_list.html'
     context_object_name = 'stocks'
 
+#Los filtres deberia arreglarlos a la hora de programar
 class StockLocalPrincipal(ListView):
     model = StockLocal
-    queryset = StockLocal.objects.filter(local=1).order_by('cantidad')
+    queryset = StockLocal.objects.filter(local=3).order_by('cantidad')
     template_name = 'local/stockLocales_list.html'
     context_object_name = 'stocks'
 
 class StockLocalTerminal(ListView):
     model = StockLocal
-    queryset = StockLocal.objects.filter(local=2).order_by('cantidad')
+    queryset = StockLocal.objects.filter(local=4).order_by('cantidad')
     template_name = 'local/stockLocales_list.html'
     context_object_name = 'stocks'
 
@@ -35,19 +36,45 @@ class IngresarStockLocal(CreateView):
 from django.core import serializers
 import json
 
+from decimal import Decimal
+
 class Productos(ListView):
     model = StockLocal
     queryset = StockLocal.objects.all()
     template_name = 'local/vender.html'
     context_object_name = 'productos'
 
-def vender(request):
-    codigo = request.GET.get('codigo')
-    productos = StockLocal.objects.filter(producto_id=codigo)
-    productos = [ vender_serializer(producto) for producto in productos ]
+#Clase sacada de stack
 
-    return HttpResponse(json.dumps(productos), content_type='application/json')
+class DecimalEncoder(json.JSONEncoder):
+    def _iterencode(self, o, markers=None):
+        if isinstance(o, decimal.Decimal):
+            # wanted a simple yield str(o) in the next line,
+            # but that would mean a yield on the line with super(...),
+            # which wouldn't work (see my comment below), so...
+            return (str(o) for o in [o])
+        return super(DecimalEncoder, self)._iterencode(o, markers)
+
+
+def vender(request):
+    #La busqueda me sale excelente de esta forma
+    codigo = request.GET.get('cantidad')
+    print(str(codigo))
+    local = request.GET.get('local')
+    print(local)
+    productos = StockLocal.objects.filter(producto=codigo, local=local)
+    productos = [ vender_serializer(producto) for producto in productos ]
+    for producto in productos:
+        print(producto)
+
+    return HttpResponse(json.dumps(productos, Decimal(str(5.6)) ), content_type='application/json')
 
 def vender_serializer(producto):
-    return {'producto':producto ,'precio_venta':precio_venta,
-            'cantidad':cantidad}
+    return {'producto':producto.producto.producto.nombre,
+            'cantidad': producto.cantidad,
+            'precio venta':producto.producto.precio_venta,
+
+            }
+
+#
+#'precio_venta': producto.producto.precio_venta,

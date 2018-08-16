@@ -31,7 +31,7 @@ class Stock(models.Model):
 
     def __str__(self):
         producto = (str(self.producto))
-        return producto 
+        return self.codigo 
 
 class Ingreso(models.Model):
     proveedor = models.ForeignKey('proveedor.Proveedor', on_delete=models.PROTECT, default=1)
@@ -55,3 +55,17 @@ class DetalleIngreso(models.Model):
 
     def __str__(self):
         return self.producto
+
+#Debo ingresar  el default correcto al resetear mi base de datos a 0
+class Envio(models.Model):
+    local_envio = models.ForeignKey('local.Local', on_delete=models.PROTECT, related_name="%(class)s_envio")
+    #local_envio = models.ForeignKey('local.Local', on_delete=models.PROTECT, related_name="%(class)s_llegada")
+    local_llegada = models.ForeignKey('local.Local', on_delete=models.PROTECT, related_name="%(class)s_llegada")
+    fecha = models.DateField(auto_now=True)
+    hora = models.TimeField(auto_now=True)
+    producto = models.ForeignKey(Stock, on_delete=models.PROTECT)
+    cantidad = models.PositiveIntegerField()
+    ubicacion = models.CharField(max_length=100, default='Sin ubicacion')
+
+    def __str__(self):
+        return self.id

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+  Evios
+{% endblock %}
+
+{% block main %}
+  <h1>E N V I O S</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Local envio</th>
+        <th>Local llega</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Ubicacion</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for envio in envios %}
+      <tr>
+        <td>{{ envio.local_envio }}</td>
+        <td>{{ envio.local_llegada }}</td>
+        <td>{{ envio.fecha }}</td>
+        <td>{{ envio.hora }}</td>
+        <td>{{ envio.producto }}</td>
+        <td>{{ envio.cantidad }}</td>
+        <td>{{ envio.ubicacion }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

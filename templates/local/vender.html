@@ -1,11 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Vender</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
+    <script type="text/javascript" src="{% static 'ajax.js' %}">  </script>
   </head>
   <body>
 
@@ -21,6 +22,7 @@
             <th>ID</th>
             <th>CODIGO</th>
             <th>Producto ID</th>
+            <th>Local</th>
           </tr>
         </thead>
         <tbody>
@@ -32,13 +34,14 @@
             <td>{{ producto.id }}</td>
             <td>{{ producto.producto.codigo }}</td>
             <td>{{ producto.producto_id }}</td>
+            <td>{{ producto.local }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
       {% endif %}
     </div>
-
+<!--
     <script type="text/javascript">
 
       $('#Vender').click(function() {
@@ -50,11 +53,13 @@
       });
 
     </script>
+-->
 
-    <form class=""  method="GET" action="{% url 'finventa' %}">
+    <form method="GET" action="{% url 'finventa' %}" id="busqueda">
       <div class="">
-        <input type="text" name="producto" id="codigo" value="">
-        <input type="submit" id="Vender" value="Vender">
+        <input type="text" name="local" value="">
+        <input type="text" name="cantidad" id="codigo" value="">
+        <input type="submit" value="Vender">
       </div>
     </form>
 

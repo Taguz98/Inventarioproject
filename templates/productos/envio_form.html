@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+  Enviar
+{% endblock %}
+
+{% block main %}
+  <h2>Enviar productos </h2>
+
+  <form class="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="">
+      <input type="submit" name="" value="Enviar">
+    </div>
+  </form>
+{% endblock %}

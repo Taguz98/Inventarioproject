@@ -12,5 +12,8 @@ urlpatterns = [
     url('^ingresos/$', views.Ingresos.as_view(), name='Lista ingresos'),
     url('^ingresos/ingresar/$', views.IngresarIngreso.as_view(), name='Ingreso de ingresos'),
     url('^ingresos/detalles/$', views.DetallesIngreso.as_view(), name='Detalles ingreso'),
-    
+
+    url('^enviar/$', views.Enviar.as_view(), name='Enviar'),
+    url('^envios/$', views.Envios.as_view(), name='Envios'),
+
 ]
