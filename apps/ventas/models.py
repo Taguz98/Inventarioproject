@@ -21,8 +21,11 @@ class DetalleVenta(models.Model):
     total = models.DecimalField(max_digits=5, decimal_places=2)
 
 #Venta rapida
-
-"""class VentaRapida(models.Model):
+class VentaRapida(models.Model):
     local = models.ForeignKey('local.Local', on_delete=models.PROTECT)
-    codigo_producto = models.CharField(max_length=8)
-    cantidad = models.PositiveIntegerField()"""
+    producto = models.ForeignKey('local.StockLocal', on_delete=models.PROTECT)
+    fecha = models.DateField(auto_now=True)
+    hora = models.TimeField(auto_now=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    cantidad = models.PositiveIntegerField(blank=True, null=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)

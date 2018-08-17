@@ -1,0 +1,39 @@
+{% extends "base/listar.html" %}
+{% block title %}
+  Ventas Rapida
+{% endblock %}
+
+{% block main %}
+  <h2>Ventas Rapidas</h2>
+  <div class="menu">
+    <a href="//">Ir al inicio</a>
+    <a href="/vender/">Vender</a>
+  </div>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Local</th>
+        <th>Producto</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for venta in ventas %}
+      <tr>
+        <td>{{ venta.local }}</td>
+        <td>{{ venta.producto.producto.producto }}</td>
+        <td>{{ venta.fecha }}</td>
+        <td>{{ venta.hora }}</td>
+        <td>{{ venta.precio }}</td>
+        <td>{{ venta.cantidad }}</td>
+        <td>{{ venta.total }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

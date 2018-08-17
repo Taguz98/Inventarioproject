@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body onload="anadir(); multiplicar();">
+
+    <h2>LO LOGREE!!!!</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio venta</th>
+          <th>Precio descuento</th>
+          <th>Cantidad</th>
+          <th>Ubicacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+          <tr>
+            <td>{{ producto.producto.producto }}</td>
+            <td> <span id="precio_normal">{{ producto.producto.precio_venta }}</span></td>
+            <td> <span id="precio_descuento">{{ producto.producto.precio_descuento }}</span></td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.ubicacion }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="" onchange="actualizar(); multiplicar();">
+      <h3>Selecione el precio:</h3>
+      <label for="">Precio normal: </label> <input type="radio" name="opcion" value="1" id="precioNormal" checked="checked">
+      <label for="">Precio descuento: </label> <input type="radio" name="opcion" value="2" id="precioDescuento">
+    </div>
+
+    <form class="" action="/ventas/venta/" method="GET">
+      <label for="">Precio:</label>
+      <input type="text" name="precio" value="" id="precio" onchange="multiplicar()">
+      <label for="">Cantidad:</label>
+      <input type="text" name="cantidad" value="1" id="cantidad" onchange="multiplicar()">
+      <label for="">Total:</label>
+      <input type="text" name="total" readonly="readonly" value="1" id="total">
+      <input type="submit" name="" value="Vender">
+    </form>
+  </body>
+
+  <script type="text/javascript">
+
+    function anadir(){
+      var precio_normal = document.getElementById("precio_normal").innerHTML;
+      document.getElementById("precioNormal").value = precio_normal;
+
+      var precio_descuento = document.getElementById("precio_descuento").innerHTML;
+      document.getElementById("precioDescuento").value = precio_descuento;
+
+      document.getElementById("precio").value = precio_normal;
+    }
+
+    function actualizar(){
+      var precio = 0;
+      if(document.getElementById("precioNormal").checked){
+        precio = document.getElementById("precioNormal").value;
+      }else if(document.getElementById("precioDescuento").checked){
+        precio = document.getElementById("precioDescuento").value;
+      }
+      document.getElementById("precio").value = precio;
+      console.log(precio);
+    }
+
+    function multiplicar(){
+      var precio = document.getElementById("precio").value;
+      var cantidad = document.getElementById("cantidad").value;
+      var total = precio * cantidad;
+      document.getElementById("total").value = total;
+    }
+  </script>
+</html>

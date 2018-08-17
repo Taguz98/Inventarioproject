@@ -36,7 +36,7 @@ class IngresarStockLocal(CreateView):
     success_url = '/stock/locales/'
 
 
-#Pruebas para vender
+"""#Pruebas para vender
 from django.core import serializers
 import json
 
@@ -76,5 +76,5 @@ def vender(request):
 def vender_serializer(producto):
     return {'producto':producto.producto.producto.nombre,
             'cantidad': producto.cantidad}
-
+"""
 #'precio_venta': producto.producto.precio_venta,

@@ -28,7 +28,7 @@
         {% for stock in stocks %}
         <tr>
           <td>{{ stock.local }}</td>
-          <td>{{ stock.producto }}</td>
+          <td>{{ stock.producto.producto }}</td>
           <td>{{ stock.cantidad }}</td>
           <td>{{ stock.ubicacion }}</td>
           <td>{{ stock.producto.precio_venta }}</td>

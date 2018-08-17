@@ -22,19 +22,21 @@ from apps.productos.views import StockLista
 #Clases de venta
 from apps.ventas.views import IngresarVenta, Ventas, DetallesVenta
 #Clase para consultar el inventario
-from apps.local.views import index, StockLocales, StockLocalPrincipal, StockLocalTerminal, IngresarStockLocal,\
-    Productos, vender
+from apps.local.views import index, StockLocales, StockLocalPrincipal,\
+    StockLocalTerminal
 
 #Pruebas para vender
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    url('^', index, name='index'),
+    url('^$', index, name='index'),
 
     url('^proveedor/', include('apps.proveedor.urls')),
     url('^productos/', include('apps.productos.urls')),
     url('^ventas/', include('apps.ventas.urls')),
+    #Prueba Ventas
+    url('^locales/', include('apps.local.urls')),
 
     #Urls para stock
     url('^stock/$', StockLista.as_view(), name='Stock'),
@@ -49,6 +51,4 @@ urlpatterns = [
     url('^stock/principal/$', StockLocalPrincipal.as_view(), name='Stock local principal'),
     url('^stock/terminal/$', StockLocalTerminal.as_view(), name='Stock local terminal'),
 
-    #Prueba Ventas
-    url('^locales/', include('apps.local.urls')),
 ]

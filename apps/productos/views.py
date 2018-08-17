@@ -26,12 +26,16 @@ class Categorias(ListView):
     template_name = 'productos/categoria_list.html'
     context_object_name = 'categorias'
 
+class CategoriaUpdate(UpdateView):
+    model = Categoria
+    template_name = 'productos/categoria_list.html'
+    success_url = '/productos/categorias/'
+
 class StockLista(ListView):
     model = Stock
     queryset = Stock.objects.all()
     template_name = 'productos/stock_list.html'
     context_object_name = 'stocks'
-    pass
 
 class IngresarProducto(CreateView):
     model = Producto
@@ -43,6 +47,12 @@ class Productos(ListView):
     queryset = Producto.objects.all()
     template_name = 'productos/productos_list.html'
     context_object_name = 'productos'
+
+class ProductosUpdate(UpdateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'productos/producto_form.html'
+    success_url = '/productos/'
 
 class IngresarIngreso(CreateView):
     model = Ingreso

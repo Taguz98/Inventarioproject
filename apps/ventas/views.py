@@ -7,6 +7,8 @@ from .models import *
 from .forms import *
 
 from apps.local.models import Local, StockLocal
+
+from apps.productos.models import Stock
 # Create your views here.
 
 class Ventas(ListView):
@@ -60,9 +62,75 @@ class IngresarVenta(CreateView):
                 form = form,
                 formset = DetalleVentaFormSet))
 
-#Venta rapida
+class VentasRapidas(ListView):
+    model = VentaRapida
+    queryset = VentaRapida.objects.all()
+    template_name = 'ventas/ventaRapida_list.html'
+    context_object_name = 'ventas'
 
-def vender(request):
+def ventaBus(request):
+    precio = request.GET.get('precio')
+    cantidad = request.GET.get('cantidad')
+    total = request.GET.get('total')
+    print("******* Finalizo su venta *****")
+    print(precio)
+    print(cantidad)
+    print(total)
+    ultimaVenta = VentaRapida.objects.last()
+    print("******")
+    print(VentaRapida.objects.last())
+    ultimaVenta.precio = precio
+    ultimaVenta.cantidad = cantidad
+    ultimaVenta.total = total
+    ultimaVenta.save()
+    RestarStockLocal(ultimaVenta.local, ultimaVenta.producto, cantidad)
+    return render(request, 'ventas/busqueda.html')
+
+def buscar(request):
+    local = request.GET.get('local')
+    codigo = request.GET.get('codigo')
+    producto = StockLocal.objects.filter( local= local, producto=codigo)
+    print(codigo)
+    print(local)
+    print(producto)
+    print("------")
+    print(StockLocal.objects.get(producto=codigo, local=local))
+    nuevo = VentaRapida()
+    nuevo.local = Local.objects.get(pk=local)
+    nuevo.producto = StockLocal.objects.get(producto=codigo, local=local)
+    nuevo.save()
+
+    return render(request, 'ventas/encontrado.html',
+                 {'productos':producto})
+
+
+def RestarStockLocal(local, producto, cantidad):
+    productoStock = Stock.objects.filter(codigo=producto)
+    for stock in productoStock:
+        cod = stock.codigo
+        stock.cantidad = stock.cantidad - int(cantidad)
+        stock.save()
+        
+    #Stock.objects.filter(codigo=producto).update(cantidad=cantidadStock-cantidad)
+    print("/-/-/-/-/-/-/-")
+    #cod = int(productoStock)
+    print(cod)
+    productoLocal = StockLocal.objects.filter(producto=cod, local=local)
+    print(productoLocal)
+    for pro in productoLocal:
+        pro.cantidad = pro.cantidad - int(cantidad)
+        pro.save()
+
+
+
+"""    productolocal.cantidad = producto.cantidad - int(cantidad)
+    productolocal.save()
+    productostock.cantidad = stock.cantidad - int(cantidad)
+    productostock.save()"""
+
+
+
+"""def vender(request):
     if request.method == 'POST':
         key = request.POST.get('codigo', None)
         if not codigo:
@@ -70,7 +138,7 @@ def vender(request):
 
         producto = StockLocal.objects.filter(codigo=codigo)
 
-        return render(request, 'ventas/ventaRapida_form.html', {'productos':producto})
+        return render(request, 'ventas/ventaRapida_term.html', {'productos':producto})
 
     return render (request, 'ventas/ventaRapida_form.html', {})
-    
+"""

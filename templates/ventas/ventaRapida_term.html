@@ -1,0 +1,35 @@
+{% extends "base/venta.html" %}
+{% block title %}
+  Venta
+{% endblock %}
+
+{% block content %}
+  <h2>Producto</h2>
+  <table>
+      <thead>
+        <tr>
+          <th>Local</th>
+          <th>Cantidad</th>
+          <th>Precio venta</th>
+          <th>Precio descuento</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ ventas.local }}</td>
+          <td>{{ ventas.producto }}</td>
+          <td>{{ ventas.producto.precio_venta }}</td>
+          <td>{{ ventas.producto.precio_descuento }}</td>
+        </tr>
+      </tbody>
+  </table>
+
+  <h2>Venta</h2>
+  <form class="" action="index.html" method="post">
+
+      {% csrf_token %}
+      {{ form.as_table }}
+
+  </form>
+{% endblock %}
