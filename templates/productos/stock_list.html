@@ -1,11 +1,16 @@
-{% extends "base.html" %}
+{% extends "base/listar.html" %}
 {% block title %}
   Stock
 {% endblock %}
 
 {% block main %}
-  <h1>S T O C K</h1>
-  <table>
+  <h2>S T O C K</h2>
+  <div class="menu">
+    <a href="/stock/">Stock</a>
+    <a href="/stock/locales/principal">Stock en el principal</a>
+    <a href="/stock/locales/terminal">Stock en el terminal</a>
+  </div>
+  <table class="tabla">
     <thead>
       <tr>
         <th>Producto</th>
@@ -25,6 +30,8 @@
         <td>{{ stock.precio_descuento }}</td>
         <td>{{ stock.codigo }}</td>
       </tr>
+      {% empty %}
+        <h2>No tiene registrado stock aun</h2>
       {% endfor %}
     </tbody>
   </table>

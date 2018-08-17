@@ -1,17 +1,26 @@
-{% extends "base.html" %}
+{% extends "base/form.html" %}
 {% block title %}
   Categoria
 {% endblock %}
 
 {% block main %}
-  <h1>Ingrese un categoria</h1>
 
-  <form class=""  method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    
-    <div class="">
-      <input type="submit" value="Guardar">
+  {% if registered %}
+    <div class="caja">
+      <div class="error">
+        <h1 class="formTitulo">Se ingreso la categoria correctamente</h1>
+        <a href="/menu/">Ir al menu</a>
+      </div>
     </div>
-  </form>
+  {% else %}
+    <form class="form" method="post">
+      <h1 class="formTitulo">Ingresando Categoria</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Guardar">
+        <a href="/productos/categorias/">Ir a Stock</a>
+    </form>
+  {% endif %}
+
 {% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} Formulario base {% endblock %}</title>
+    <link rel="stylesheet" href="/static/CSS/estiloForm.css">
+
+    <link rel="stylesheet" href="/static/CSS/estiloAdmin.css">
+
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            {% block main %}
+
+            {% endblock %}
+
+            {% else %}
+              <div class="caja">
+                  <div class="error">
+                      <h1 class="formTitulo">ERROR SIN ACCESO </h1>
+                      <a href="/">VOLVER AL INICIO</a>
+                  </div>
+              </div>
+        {% endif %}
+      {% else %}
+        <div class="caja">
+            <div class="error">
+                <h1 class="formTitulo">ERROR SIN ACCESO </h1>
+                <a href="/">VOLVER AL INICIO</a>
+            </div>
+        </div>
+    {% endif %}
+
+  </body>
+</html>

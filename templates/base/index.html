@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} FC {% endblock %}</title>
+    <link rel="stylesheet" href="/static/CSS/estiloIndex.css">
+    <!--Tipo de letra para el titulo-->
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Pacifico" rel="stylesheet">
+    <!-- Tipo de letra para publicitarse-->
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+</head>
+<body>
+  {% block header%}
+
+  <header >
+   <nav class="barra" id="prueba">
+     <div class="nom-tienda">
+         <p><a href="index.html">FGA</a></p>
+     </div>
+
+     <ul class="opciones">
+         <li><a href="#">Consultar</a>
+             <ul class="sub-opciones">
+                 <li><a href="/productos/">Inventario</a></li>
+                 <li><a href="#">Ventas</a></li>
+                 <li><a href="/cuentas/">Empleados</a></li>
+
+             </ul>
+         </li>
+         <li><a href="#">Vender</a></li>
+         <li><a href="/register/">Registrar</a></li>
+         <li><a href="/login/">Ingresar</a></li>
+
+       </ul>
+
+     </nav>
+     <h1> <strong>FGA</strong> Tecnologia</h1>
+   </header>
+
+  {% endblock %}
+
+
+  {% block content %}
+
+    <main>
+      <h2>VENTA DE ACCESORIOS PARA CELULARES Y REPACION DE TODA CLASE DE TELEFONOS</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum nisi dolore quaerat
+        minima, nemo obcaecati labore maxime qui eius quisquam. Facere in nostrum voluptates labore
+        tempora animi perferendis deleniti et.</p>
+      </main>
+
+  {% endblock %}
+
+  {% block footer %}
+
+  <footer>
+
+    <div class="footer-contenedor">
+      <div class="footer-columna">
+        <h3>Local 1</h3>
+        <h4></h4>
+        <span> <strong>Direccion:</strong> Av. España 3-72 entre Benalcazar y Castellana</span>
+        <h4></h4>
+        <span> <strong>Telefono:</strong> 2863785</span>
+        <h4></h4>
+        <span> <strong>Celular:</strong> 099 220 0975</span>
+
+      </div>
+
+      <div class="footer-columna">
+
+        <h3>Local 2</h3>
+        <h4></h4>
+        <span> <strong>Direccion:</strong> Terminal terrestre</span>
+        <h4></h4>
+        <span> <strong>Telefono:</strong> 2863785</span>
+        <h4></h4>
+        <span> <strong>Celular:</strong> 099 340 0557</span>
+
+      </div>
+    </div>
+
+    <div class="footer-copy">
+        Todos los derechos reservados | EST&copy
+    </div>
+
+  </footer>
+
+  {% endblock %}
+
+</body>
+</html>

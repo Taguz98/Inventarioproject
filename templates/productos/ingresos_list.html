@@ -1,12 +1,15 @@
-{% extends "base.html" %}
+{% extends "base/listar.html" %}
 {% block title %}
   Lista Ingresos
 {% endblock %}
 
 {% block main %}
-  <h1>Lista de Ingresos</h1>
+  <h2>Lista de Ingresos</h2>
+  <div class="menu">
+    <a href="/productos/ingresar/ingresos/">Ingresar</a>
+  </div>
 
-  <table>
+  <table class="tabla">
     <thead>
       <tr>
         <th>Numero</th>
@@ -28,6 +31,8 @@
         <td>{{ ingreso.fecha }}</td>
         <td>{{ ingreso.hora }}</td>
       </tr>
+      {% empty %}
+        <h2>No a registrado ingresos aun</h2>
       {% endfor %}
     </tbody>
   </table>

@@ -1,17 +1,26 @@
-{% extends "base.html" %}
+{% extends "base/form.html" %}
 {% block title %}
   Enviar
 {% endblock %}
 
 {% block main %}
-  <h2>Enviar productos </h2>
 
-  <form class="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <div class="">
-      <input type="submit" name="" value="Enviar">
+  {% if registered %}
+    <div class="caja">
+      <div class="error">
+        <h1 class="formTitulo">Envio finalizado</h1>
+        <a href="/menu/">Ir al menu</a>
+      </div>
     </div>
-  </form>
+  {% else %}
+    <form class="form" method="post">
+      <h1 class="formTitulo">Enviando</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Enviar">
+        <a href="/envios/">Ir a envios</a>
+    </form>
+  {% endif %}
+
 {% endblock %}

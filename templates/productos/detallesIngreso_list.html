@@ -1,10 +1,14 @@
-{% extends "base.html" %}
+{% extends "base/listar.html" %}
 {% block title %}
   Lista Detalle Ingreso
 {% endblock %}
 
 {% block main %}
-  <table>
+  <h2>Detalles de Ingreso</h2>
+  <div class="menu">
+    <a href="/productos/ingresos/">Ingresos</a>
+  </div>
+  <table class="tabla">
     <thead>
       <tr>
         <th>Numero</th>
@@ -34,6 +38,8 @@
         <td>{{ detalle.id_ingreso.local }}</td>
         <td>{{ detalle.id_ingreso.proveedor }}</td>
       </tr>
+      {% empty %}
+        <h2>No tiene detalles aun</h2>
       {% endfor %}
     </tbody>
   </table>

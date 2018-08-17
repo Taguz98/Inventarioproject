@@ -8,6 +8,9 @@ from .models import *
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'base/index.html')
+
 class StockLocales(ListView):
     model = StockLocal
     queryset = StockLocal.objects.all().order_by('cantidad')
@@ -33,6 +36,7 @@ class IngresarStockLocal(CreateView):
     success_url = '/stock/locales/'
 
 
+#Pruebas para vender
 from django.core import serializers
 import json
 
@@ -67,14 +71,10 @@ def vender(request):
     for producto in productos:
         print(producto)
 
-    return HttpResponse(json.dumps(productos, Decimal(str(5.6)) ), content_type='application/json')
+    return HttpResponse(json.dumps(productos, content_type='application/json'))
 
 def vender_serializer(producto):
     return {'producto':producto.producto.producto.nombre,
-            'cantidad': producto.cantidad,
-            'precio venta':producto.producto.precio_venta,
+            'cantidad': producto.cantidad}
 
-            }
-
-#
 #'precio_venta': producto.producto.precio_venta,

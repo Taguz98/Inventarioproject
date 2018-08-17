@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} TITULO GENERICO {% endblock %}</title>
+    <link rel="stylesheet" href="/static/CSS/estiloListas.css">
+    <link rel="stylesheet" href="/static/CSS/estiloBarra.css">
+  </head>
+  <body>
+    {% block header %}
+    {% if user.is_authenticated %}
+
+        {% if user.is_superuser %}
+
+            <header >
+               <nav class="barra" id="prueba">
+                 <div class="nom-tienda">
+                     <p><a href="/">FGA</a></p>
+                 </div>
+
+                 <ul class="opciones">
+                     <li><a href="#">Consultar</a>
+                         <ul class="sub-opciones">
+                             <li><a href="/lista-proveedores/">Proveedor</a></li>
+                             <li><a href="#">Ventas</a></li>
+                             <li><a href="#">Empleados</a></li>
+
+                         </ul>
+                     </li>
+                     <li><a href="/dashboardadmin/">Ir al Menu</a></li>
+
+                   </ul>
+
+                 </nav>
+                 <h1> <strong>FGA</strong> Tecnologia</h1>
+            </header>
+
+
+        {% else %}
+
+            <header >
+               <nav class="barra" id="prueba">
+                 <div class="nom-tienda">
+                     <p><a href="index.html">FGA</a></p>
+                 </div>
+
+                 <ul class="opciones">
+                     <li><a href="#">Vender</a></li>
+                     <li><a href="/register/">Registrar</a></li>
+                     <li><a href="/dashboardempleado/">Ingresar</a></li>
+
+                 </ul>
+
+                 </nav>
+                 <h1> <strong>FGA</strong> Tecnologia</h1>
+            </header>
+
+        {% endif %}
+
+    {% else %}
+
+          <header >
+               <nav class="barra" id="prueba">
+                 <div class="nom-tienda">
+                     <p><a href="index.html">FGA</a></p>
+                 </div>
+
+                 <ul class="opciones">
+                     <li><a href="/login/">Ingresar</a></li>
+
+                 </ul>
+
+                 </nav>
+                 <h1> <strong>FGA</strong> Tecnologia</h1>
+            </header>
+
+    {% endif %}
+
+    {% endblock %}
+
+    {% if user.is_authenticated %}
+      <main>
+        {% block main %}
+
+        {% endblock %}
+      </main>
+    {% endif %}
+
+  </body>
+</html>

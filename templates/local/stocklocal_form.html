@@ -1,17 +1,26 @@
-{% extends "base.html" %}
+{% extends "base/form.html" %}
 {% block title %}
   Ingresando Stock
 {% endblock %}
 
 {% block main %}
-  <h1>Ingresando el stock </h1>
 
-  <form class=""  method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <div class="">
-      <input type="submit" value="Ingresar">
+  {% if registered %}
+    <div class="caja">
+      <div class="error">
+        <h1 class="formTitulo">Se ingreso el stock correctamente</h1>
+        <a href="/menu/">Ir al menu</a>
+      </div>
     </div>
-  </form>
+  {% else %}
+    <form class="form" method="post">
+      <h1 class="formTitulo">Ingresando Stock</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Ingresar">
+        <a href="/stock/">Ir a Stock</a>
+    </form>
+  {% endif %}
+
 {% endblock %}

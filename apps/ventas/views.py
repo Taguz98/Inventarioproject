@@ -12,19 +12,19 @@ from apps.local.models import Local, StockLocal
 class Ventas(ListView):
     model = Venta
     queryset = Venta.objects.all()
-    template_name = 'venta/venta_list.html'
+    template_name = 'ventas/venta_list.html'
     context_object_name = 'ventas'
 
 class DetallesVenta(ListView):
     model = DetalleVenta
     queryset = DetalleVenta.objects.all()
-    template_name = 'venta/detalleVenta_list.html'
+    template_name = 'ventas/detalleVenta_list.html'
     context_object_name = 'detalles'
 
 class IngresarVenta(CreateView):
     model = Venta
     form_class = VentaForm
-    template_name = 'productos/venta_form.html'
+    template_name = 'ventas/venta_form.html'
     success_url = '/ventas/'
 
     def get(self, request, *args, **kwargs):
@@ -59,3 +59,18 @@ class IngresarVenta(CreateView):
             self.get_context_data(
                 form = form,
                 formset = DetalleVentaFormSet))
+
+#Venta rapida
+
+def vender(request):
+    if request.method == 'POST':
+        key = request.POST.get('codigo', None)
+        if not codigo:
+            return HttpResponse("Ingrese su codigo")
+
+        producto = StockLocal.objects.filter(codigo=codigo)
+
+        return render(request, 'ventas/ventaRapida_form.html', {'productos':producto})
+
+    return render (request, 'ventas/ventaRapida_form.html', {})
+    
