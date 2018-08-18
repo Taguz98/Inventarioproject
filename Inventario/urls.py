@@ -20,10 +20,12 @@ from django.conf.urls import url, include
 #Clases para venta y stock
 from apps.productos.views import StockLista
 #Clases de venta
-from apps.ventas.views import IngresarVenta, Ventas, DetallesVenta
+#from apps.ventas.views import IngresarVenta, Ventas, DetallesVenta
 #Clase para consultar el inventario
 from apps.local.views import index, StockLocales, StockLocalPrincipal,\
     StockLocalTerminal
+
+from apps.ventas.views import vender, terminarVenta, VentasRapidas
 
 #Pruebas para vender
 
@@ -42,9 +44,9 @@ urlpatterns = [
     url('^stock/$', StockLista.as_view(), name='Stock'),
 
     #Urls para vender
-    url('^vender/$', IngresarVenta.as_view(), name='Vender'),
-    url('^ventas/$', Ventas.as_view(), name='Ventas'),
-    url('^ventas/detalles/$', DetallesVenta.as_view(), name='Detalles ventas'),
+    url('^vender/$', vender, name='Vender'),
+    url('^ventas/$', VentasRapidas.as_view(), name='Ventas'),
+    url('^vender/terminar/$',terminarVenta, name='Detalles ventas'),
 
     #Urls para consultar stock
     url('^stock/locales/$', StockLocales.as_view(), name='Stock general'),

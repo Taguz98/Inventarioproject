@@ -68,17 +68,11 @@ class VentasRapidas(ListView):
     template_name = 'ventas/ventaRapida_list.html'
     context_object_name = 'ventas'
 
-def ventaBus(request):
+def terminarVenta(request):
     precio = request.GET.get('precio')
     cantidad = request.GET.get('cantidad')
     total = request.GET.get('total')
-    print("******* Finalizo su venta *****")
-    print(precio)
-    print(cantidad)
-    print(total)
     ultimaVenta = VentaRapida.objects.last()
-    print("******")
-    print(VentaRapida.objects.last())
     ultimaVenta.precio = precio
     ultimaVenta.cantidad = cantidad
     ultimaVenta.total = total
@@ -86,15 +80,10 @@ def ventaBus(request):
     RestarStockLocal(ultimaVenta.local, ultimaVenta.producto, cantidad)
     return render(request, 'ventas/busqueda.html')
 
-def buscar(request):
+def vender(request):
     local = request.GET.get('local')
     codigo = request.GET.get('codigo')
     producto = StockLocal.objects.filter( local= local, producto=codigo)
-    print(codigo)
-    print(local)
-    print(producto)
-    print("------")
-    print(StockLocal.objects.get(producto=codigo, local=local))
     nuevo = VentaRapida()
     nuevo.local = Local.objects.get(pk=local)
     nuevo.producto = StockLocal.objects.get(producto=codigo, local=local)
@@ -110,13 +99,7 @@ def RestarStockLocal(local, producto, cantidad):
         cod = stock.codigo
         stock.cantidad = stock.cantidad - int(cantidad)
         stock.save()
-        
-    #Stock.objects.filter(codigo=producto).update(cantidad=cantidadStock-cantidad)
-    print("/-/-/-/-/-/-/-")
-    #cod = int(productoStock)
-    print(cod)
-    productoLocal = StockLocal.objects.filter(producto=cod, local=local)
-    print(productoLocal)
+
     for pro in productoLocal:
         pro.cantidad = pro.cantidad - int(cantidad)
         pro.save()
