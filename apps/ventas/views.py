@@ -80,7 +80,7 @@ def terminarVenta(request):
         ultimaVenta.cantidad = cantidad
         ultimaVenta.total = total
         ultimaVenta.save()
-        RestarStockLocal(ultimaVenta.local, ultimaVenta.producto, cantidad)
+        RestarStockLocal(ultimaVenta.local, ultimaVenta.producto.producto.codigo, cantidad)
     return render(request, 'ventas/busqueda.html')
 
 def vender(request):
