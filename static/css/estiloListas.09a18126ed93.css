@@ -1,0 +1,80 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+main{
+  display: block;
+}
+
+h2{
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+}
+
+.menu{
+  background: #212a23;
+  margin-left: 10%;
+  margin-top: 20px;
+  width: 80%;
+  padding: 5px;
+}
+
+.menu a{
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.menu a:hover{
+  color: #ccc;
+}
+
+
+body{
+	background: #113A52;
+	font-family: Arial;
+}
+
+.tabla{
+	width: 90%;
+	margin: 20px auto;
+
+}
+
+table{
+	width: 100%;
+	background: white;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+th, td{
+	padding: 10px;
+}
+
+thead{
+	background: #212A23;
+	color: white;
+}
+
+tr td a{
+  text-decoration: none;
+  color: #000;
+}
+
+tr td a:hover{
+  color: orange;
+}
+
+tr:nth-child(even){
+	background-color: #ccc;
+}
+
+tr:hover td{
+	background-color: #369681;
+	color: white;
+}

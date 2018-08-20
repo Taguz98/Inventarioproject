@@ -1,0 +1,120 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 130%;
+	font-family: Arial;
+}
+
+body{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #113A52;
+}
+
+.cajaLogin{
+	background-color: #212A23;
+	width: 400px;
+	border-top: solid 5px;
+	box-sizing: border-box;
+	padding: 5px 0;
+	box-shadow: 0 0 5px #8A8C8C;
+}
+
+.superiorLogin{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tituloLogin{
+	color: #8A8B8C;
+}
+
+.tituloLogin span{
+	color: #F39B53;
+}
+
+.imagenLogin{
+	width: 8px;
+	border-radius: 50%;
+}
+
+.camposLogin{
+	display: flex;
+	flex-direction: column;
+	padding: 15px 20px;
+}
+
+input[type=text], [type=password]{
+	height: 50px;
+	margin: 5px 0;
+	padding: 5px;
+	transition: all .7s;
+	font-size: 140%;
+}
+
+input[type=text]:focus, [type=password]:focus{
+	border-color: #C8C8C8;
+	background-color: #FCFCFC;
+}
+
+.campoIngresar{
+	height: 20%;
+	border: none;
+	background-color: #31B1E5;
+	color: white;
+	padding: 10px;
+	margin: 5px 0 3px;
+}
+
+.campoIngresar:hover {
+	background-color: #39A1E5;
+}
+
+.noEntro{
+	color: #F39B53;
+	text-decoration: none;
+	text-align: center;
+	font-size: 100%;
+}
+
+.noEntro:hover{
+	color: #E67E22;
+}
+
+.ret-index{
+	color: rgb(192, 51, 51);
+	text-align: center;
+	text-decoration: none;
+	padding-top: 10px;
+	font-size: 20px;
+	font-style: italic;
+}
+
+/*Notificaciones */
+
+/*Estilo del error*/
+
+.noti{
+  display: block;
+  margin: auto;
+  padding: 30px;
+  background: #ccc;
+	text-align: center;
+}
+
+.noti a{
+  background: #ccc;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #000;
+}
+
+.noti a:hover{
+	color: orange;
+}

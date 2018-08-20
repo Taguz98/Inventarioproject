@@ -1,0 +1,82 @@
+body{
+  font-family: sans-serif;
+  background: #113A52;
+}
+
+.centro{
+  width: 700px;
+  margin: auto;
+  margin-top: 5%;
+  padding: 30px;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.6);
+  position: relative;
+  background: #ccc;
+}
+
+.formTitulo{
+    text-align: center;
+    margin-top: 0;
+    padding-bottom: 20px;
+    color: #2F4F4F;
+}
+
+.busqueda{
+  text-align: center;
+  padding: 10px
+}
+
+input, label{
+  display: block;
+  width: 90%;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+label{
+    padding-left: 5px;
+    margin-bottom: 15px;
+}
+
+input{
+  padding: 20px;
+  border: 1px solid
+  rgba(0, 0, 0, 0.3);
+  background: #D1E1D1;
+  margin-bottom: 30px;
+}
+
+select{
+  padding: 15px;
+  width: 100%;
+  background: #D1E1D1;
+  border: none;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+select option{
+  font-size: 10px;
+  padding: 12px;
+  height: 20px;
+  width: 100%;
+}
+
+.formEnviar{
+    background: #000;
+    color: #ccc;
+    padding: 10px 10px;
+    cursor: pointer;
+    border: none;
+    margin-top: -20px;
+}
+
+a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  margin: 0 15px 0 15px;
+}
+
+a:hover{
+  color: #fff;
+}

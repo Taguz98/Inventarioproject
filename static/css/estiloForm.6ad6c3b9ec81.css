@@ -1,0 +1,151 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    font-family: sans-serif;
+    /*#113A52*/
+    /*#8f421f*/
+    background: #113A52;
+}
+
+.form{
+    width: 500px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.6);
+    position: relative;
+    /*#808080*/
+    /*#bd8a73*/
+    /*#e67a59*/
+    /*#f3d0b5*/
+    background: #e67a59;
+    /*rgb(240, 216, 195)*/
+    /*rgb(240, 213, 174)*/
+    /*rgb(233, 193, 140)*/
+    background: #ccc;
+}
+
+.formTitulo{
+    text-align: center;
+    margin-top: 0;
+    padding-bottom: 20px;
+    color: #2F4F4F;
+}
+
+
+input, label, .formEnviar{
+    display: block;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+input{
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+    background: #D3D3D3;
+}
+
+/*Quitamos las fechitas del lado derecho*/
+input[type=number]{
+  -moz-appearance: textfield;
+}
+
+label{
+    padding-left: 5px;
+    position: absolute;
+    margin-top: -30px;
+}
+
+select{
+  padding: 15px;
+  width: 100%;
+  background: #D3D3D3;
+  margin-bottom: 40px;
+  border: none;
+  font-size: 20px;
+}
+
+select option{
+  font-size: 10px;
+  padding: 12px;
+  height: 20px;
+  width: 100%;
+}
+
+.formEnviar{
+    background: #000;
+    color: #ccc;
+    padding: 10px 10px;
+    cursor: pointer;
+    border: none;
+    margin-top: -20px;
+}
+
+a{
+  background: #ccc;
+  text-decoration: none;
+  padding: 10px 20px;
+  align-items: center;
+  color: #000;
+}
+
+a:hover{
+  color: #fff;
+}
+
+/* Hacer la animacion de las letras */
+
+input:focus{
+    outline: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+select:focus{
+    outline: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+
+/*Estilo del error*/
+
+
+.error{
+  display: block;
+  margin: auto;
+  padding: 20px;
+  background: #ccc;
+}
+
+.error a{
+  text-align: center;
+  background: #ccc;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #000;
+  margin-top: 20px;
+}
+
+.error a:hover{
+  color: orange;
+}
+
+/*Notificacion*/
+
+.noti{
+  display: block;
+  position: relative;
+  background: #ccc;
+}
+
+.noti h1{
+  text-align: center;
+  color: white;
+}
+
+.noti a{
+  text-decoration: none;
+  font-size: 15px;
+}

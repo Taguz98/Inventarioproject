@@ -1,0 +1,76 @@
+.barra{
+    width: 100%;
+    margin: auto;
+    background: #212a23;
+    text-align: right;
+}
+
+.barra ul{
+    list-style: none;
+}
+
+.opciones li{
+    position: relative;
+    display: inline-block;
+}
+
+.opciones li a{
+    display: block;
+    padding: 10px 25px 0px 25px;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+nav li a:hover{
+    color: #ce7d35;
+    transition: all .3s;
+}
+
+.sub-opciones{
+    position: absolute;
+    background: #212a23;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.sub-opciones li a{
+    display: block;
+    padding: 8px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.opciones li:hover .sub-opciones{
+    visibility: visible;
+    opacity: 1;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+/* */
+.nom-tienda{
+    width: 30%;
+    height: 50px;
+    float: left;
+    padding: 10px;
+    text-align: left;
+}
+
+.nom-tienda p a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px;
+    color: rgb(192, 51, 51);
+}
+
+/* Posicion statica*/
+
+#prueba{
+    position: fixed;
+    height: 50px;
+    width: 100%;
+}
