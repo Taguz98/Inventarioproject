@@ -69,3 +69,14 @@ select option{
     border: none;
     margin-top: -20px;
 }
+
+a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  margin: 0 15px 0 15px;
+}
+
+a:hover{
+  color: #fff;
+}
