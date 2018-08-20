@@ -6,22 +6,20 @@
     <link rel="stylesheet" href="/static/css/ventas/menu.css">
   </head>
   <body>
-
-    <div class="centro">
-      <h2 class="formTitulo">VENTA</h2>
-      <form class="busqueda" method="GET" action="/ventas/terminar/">
-        <select class="" name="local">
-          <option value="1">Local principal</option>
-          <option value="2">Local terminal</option>
-        </select>
-        <label for="">Ingrese el codigo del producto:</label>
-        <input type="text" name="codigo" value="" maxlength="8">
-
-        <input type="submit" name="" value="BUSCAR">
-
-
-      </form>
-    </div>
+  {% if user.is_authenticated %}
+      <div class="centro">
+        <h2 class="formTitulo">VENTA</h2>
+        <form class="busqueda" method="GET" action="/ventas/terminar/">
+          <select class="" name="local">
+            <option value="1">Local principal</option>
+            <option value="2">Local terminal</option>
+          </select>
+          <label for="">Ingrese el codigo del producto:</label>
+          <input type="text" name="codigo" value="" maxlength="8">
+          <input type="submit" name="" value="BUSCAR">
+        </form>
+      </div>
+  {% endif %}
 
   </body>
 </html>

@@ -88,7 +88,7 @@ input[type=text]:focus, [type=password]:focus{
 }
 
 .ret-index{
-	color: rgb(192, 51, 51); 
+	color: rgb(192, 51, 51);
 	text-align: center;
 	text-decoration: none;
 	padding-top: 10px;
@@ -98,18 +98,23 @@ input[type=text]:focus, [type=password]:focus{
 
 /*Notificaciones */
 
-.noti{
-	display: block;
-	position: relative;
-	background: #ccc; 
-}
+/*Estilo del error*/
 
-.noti h1{ 
+.noti{
+  display: block;
+  margin: auto;
+  padding: 30px;
+  background: #ccc;
 	text-align: center;
-	color: white; 
 }
 
 .noti a{
-	text-decoration: none; 
-	font-size: 15px; 
+  background: #ccc;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #000;
+}
+
+.noti a:hover{
+	color: orange;
 }

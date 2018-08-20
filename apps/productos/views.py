@@ -125,20 +125,20 @@ class Enviar(CreateView):
             self.object = form.save()
             #Funcion que me actualiza mi inventario
             localcon = self.object.local_envio.id
+            productocon = self.object.producto
             cantidadcon = self.object.cantidad
-            cantidadcon2 = StockLocal.objects.filter(local = localcon, cantidad = cantidadcon )
-            cantidadcon2 = int(cantidadcon)
-            print(cantidadcon2)
+            cantidadconPrin = StockLocal.objects.filter(local = localcon, producto = productocon)
+            for cant in cantidadconPrin:
+                cantidadcon2 = cant.cantidad
+
             if ( cantidadcon2 > cantidadcon):
-                RestarStockLocal(self.object.local_envio.id, self.object.producto, self.object.cantidad)
-                SumarStockLocal(self.object.id, self.object.local_llegada.id , self.object.producto, self.object.cantidad)
+                RestarStockLocal(self.object.local_envio.id, self.object.producto.codigo, self.object.cantidad)
+                SumarStockLocal(self.object.id, self.object.local_llegada.id , self.object.producto.codigo, self.object.cantidad)
                 return HttpResponseRedirect(self.success_url)
             else:
-                print("Ya no tengo cosas!!!")
                 envios = Envio.objects.filter(id=self.object.id)
-                #print(envios)
                 envios.delete()
-                return HttpResponse("Su stock es "+ cantidadcon2)
+                return HttpResponseRedirect('/productos/enviar/')
 
         else:
             return render_to_response(

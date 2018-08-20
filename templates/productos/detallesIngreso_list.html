@@ -4,21 +4,22 @@
 {% endblock %}
 
 {% block main %}
-  <h2>Detalles de Ingreso</h2>
+  <h2>Detalles de Ingresos</h2>
   <div class="menu">
     <a href="/productos/ingresos/">Ingresos</a>
+    <a href="/productos/">Productos</a>
+    <a href="/productos/categorias/">Categorias</a>
+    <a href="/productos/envios/">Envios</a>
   </div>
   <table class="tabla">
     <thead>
       <tr>
         <th>Numero</th>
-        <th>Ingreso</th>
         <th>Producto</th>
         <th>Cantidad</th>
         <th>Precio Compra</th>
         <th>Precio Venta</th>
         <th>Precio Descuento</th>
-        <th>Codigo Producto</th>
         <th>Local</th>
         <th>Proveedor</th>
       </tr>
@@ -28,13 +29,11 @@
       {% for detalle in detalles %}
       <tr>
         <td>{{ detalle.id }}</td>
-        <td>{{ detalle.id_ingreso }}</td>
         <td>{{ detalle.producto }}</td>
         <td>{{ detalle.cantidad }}</td>
         <td>{{ detalle.precio_compra }}</td>
         <td>{{ detalle.precio_venta }}</td>
         <td>{{ detalle.precio_descuento }}</td>
-        <td>{{ detalle.codigo_producto }}</td>
         <td>{{ detalle.id_ingreso.local }}</td>
         <td>{{ detalle.id_ingreso.proveedor }}</td>
       </tr>

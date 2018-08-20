@@ -5,46 +5,79 @@
     <title>{% block title %} FC {% endblock %}</title>
     <link rel="stylesheet" href="/static/CSS/estiloIndex.css">
     <!--Tipo de letra para el titulo-->
-    
+
     <!-- Tipo de letra para publicitarse-->
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 </head>
 <body>
-  {% block header%}
-
-  <header >
-   <nav class="barra" id="prueba">
-     <div class="nom-tienda">
-         <p><a href="index.html">FGA</a></p>
-     </div>
-
-     <ul class="opciones">
-         <li><a href="#">Consultar</a>
-             <ul class="sub-opciones">
-                 <li><a href="/productos/">Inventario</a></li>
-                 <li><a href="#">Ventas</a></li>
-                 <li><a href="/cuentas/">Empleados</a></li>
-
-             </ul>
-         </li>
-         <li><a href="#">Vender</a></li>
-         <li><a href="/register/">Registrar</a></li>
-         <li><a href="/login/">Ingresar</a></li>
-
-       </ul>
-
-     </nav>
-     <h1> <strong>FGA</strong> Tecnologia</h1>
-   </header>
-
+  {% block header %}
+  {% if user.is_authenticated %}
+      {% if user.is_superuser %}
+          <header >
+             <nav class="barra" id="prueba">
+               <div class="nom-tienda">
+                   <p><a href="/">FGA</a></p>
+               </div>
+               <ul class="opciones">
+                   <li><a href="#">Stock</a>
+                       <ul class="sub-opciones">
+                           <li><a href="/stock/principal/">Principal</a></li>
+                           <li><a href="/stock/terminal/">Terminal</a></li>
+                       </ul>
+                   </li>
+                   <li><a href="/ventas/vender/">Vender</a></li>
+                   <li><a href="/ventas/">Ventas</a></li>
+                   <li><a href="/menu/admin/">Ir al menu</a></li>
+                   <li><a href="/salir/">Salir</a> </li>
+                 </ul>
+               </nav>
+               <h1> <strong>FGA</strong> Tecnologia</h1>
+          </header>
+      {% else %}
+          <header >
+             <nav class="barra" id="prueba">
+               <div class="nom-tienda">
+                   <p><a href="index.html">FGA</a></p>
+               </div>
+               <ul class="opciones">
+                   <li><a href="#">Stock</a>
+                       <ul class="sub-opciones">
+                           <li><a href="/stock/principal/">Principal</a></li>
+                           <li><a href="/stock/terminal/">Terminal</a></li>
+                       </ul>
+                   </li>
+                   <li><a href="/ventas/vender/">Vender</a></li>
+                   <li><a href="/ventas/">Ventas</a></li>
+                   <li><a href="/salir/">Salir</a> </li>
+               </ul>
+               </nav>
+               <h1> <strong>FGA</strong> Tecnologia</h1>
+          </header>
+      {% endif %}
+  {% else %}
+        <header >
+             <nav class="barra" id="prueba">
+               <div class="nom-tienda">
+                   <p><a href="index.html">FGA</a></p>
+               </div>
+               <ul class="opciones">
+                   <li><a href="/login/">Ingresar</a></li>
+               </ul>
+               </nav>
+               <h1> <strong>FGA</strong> Tecnologia</h1>
+          </header>
+  {% endif %}
   {% endblock %}
-
 
   {% block content %}
 
     <main>
-      <h2>VENTA DE ACCESORIOS PARA CELULARES Y REPACION DE TODA CLASE DE TELEFONOS</h2>
+      <br>
+      <h2>VENTA DE ACCESORIOS PARA CELULAR</h2>
+      <br>
+      <h2>REPACION DE TODA CLASE DE CELULARES</h2>
+      <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum nisi dolore quaerat
         minima, nemo obcaecati labore maxime qui eius quisquam. Facere in nostrum voluptates labore
         tempora animi perferendis deleniti et.</p>
@@ -65,7 +98,6 @@
         <span> <strong>Telefono:</strong> 2863785</span>
         <h4></h4>
         <span> <strong>Celular:</strong> 099 220 0975</span>
-
       </div>
 
       <div class="footer-columna">

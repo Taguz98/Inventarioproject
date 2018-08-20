@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+     <title>Menu Empleado</title>
+     <link rel="stylesheet" href="/static/CSS/estiloAdmin.css">
+</head>
+<body>
+    <div class="caja">
+        {% if user.is_authenticated %}
+            <div class="error">
+                <h1>Menu Empleado</h1>
+                <a href="/salir/">Salir</a>
+                <h1>Opciones</h1>
+                <a href="/ventas/vender/">Vender</a>
+                <a href="/ventas/">Ventas</a>
+                <a href="/stock/principal/">Stock principal</a>
+                <a href="/stock/terminal/">Stock terminal</a>
+            </div>
+        {% else %}
+        <div class="error">
+            <h1>ERROR SIN ACCESO</h1>
+            <a href="/">Volver a inico</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

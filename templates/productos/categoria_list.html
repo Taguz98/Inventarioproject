@@ -6,6 +6,9 @@
 {% block main %}
   <h2>Lista de Categorias</h2>
   <div class="menu">
+    <a href="/productos/">Productos</a>
+    <a href="/productos/ingresos/">Ingresos</a>
+    <a href="/productos/envios/">Envios</a>
     <a href="/productos/categorias/registrar/">Registrar categoria</a>
   </div>
   <table class="tabla">
@@ -13,6 +16,7 @@
       <tr>
         <th>ID</th>
         <th>Nombre</th>
+        <th>Editar</th>
       </tr>
     </thead>
 
@@ -21,6 +25,7 @@
       <tr>
         <td>{{ categoria.id }}</td>
         <td>{{ categoria.nombre }}</td>
+        <td><a href="/productos/categorias/editar/{{ categoria.id }}">Editar</a> </td>
       </tr>
       {% empty %}
         <h2>No hay categorias registradas</h2>

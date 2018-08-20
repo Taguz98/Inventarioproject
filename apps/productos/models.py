@@ -31,7 +31,7 @@ class Stock(models.Model):
 
     def __str__(self):
         producto = (str(self.producto))
-        return self.codigo
+        return producto
 
 class Ingreso(models.Model):
     proveedor = models.ForeignKey('proveedor.Proveedor', on_delete=models.PROTECT, default=1)

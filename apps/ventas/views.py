@@ -75,7 +75,7 @@ def terminarVenta(request):
     if cantidad == None:
         cantidad = 1
     ultimaVenta = VentaRapida.objects.last()
-    if (ultimaVenta):
+    if (ultimaVenta and total != None):
         ultimaVenta.precio = precio
         ultimaVenta.cantidad = cantidad
         ultimaVenta.total = total
@@ -96,11 +96,9 @@ def vender(request):
     return render(request, 'ventas/encontrado.html',
                  {'productos':producto})
 
-
 def RestarStockLocal(local, producto, cantidad):
     productoStock = Stock.objects.filter(codigo=producto)
     for stock in productoStock:
-        print(stock.cantidad)
         cod = stock.codigo
         stock.cantidad = stock.cantidad - int(cantidad)
         stock.save()
@@ -109,25 +107,3 @@ def RestarStockLocal(local, producto, cantidad):
     for pro in productoLocal:
         pro.cantidad = pro.cantidad - int(cantidad)
         pro.save()
-
-
-
-"""    productolocal.cantidad = producto.cantidad - int(cantidad)
-    productolocal.save()
-    productostock.cantidad = stock.cantidad - int(cantidad)
-    productostock.save()"""
-
-
-
-"""def vender(request):
-    if request.method == 'POST':
-        key = request.POST.get('codigo', None)
-        if not codigo:
-            return HttpResponse("Ingrese su codigo")
-
-        producto = StockLocal.objects.filter(codigo=codigo)
-
-        return render(request, 'ventas/ventaRapida_term.html', {'productos':producto})
-
-    return render (request, 'ventas/ventaRapida_form.html', {})
-"""

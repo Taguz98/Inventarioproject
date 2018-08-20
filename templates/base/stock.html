@@ -69,11 +69,11 @@
 
     {% if user.is_authenticated %}
       <main>
-        {% if user.is_superuser %}
-          {% block main %}
 
-          {% endblock %}
-        {% endif %}
+        {% block main %}
+
+        {% endblock %}
+
       </main>
     {% endif %}
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/CSS/estiloLogin.css">
+
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <div class="noti">
+            <h1>HA INICIADO SESION COMO ADMINISTRADOR</h1>
+            <a href="/menu/admin/">Ir al dashboard</a>
+        </div>
+        {% else %}
+        <div class="noti">
+            <h1>HA INICIADO SESION COMO EMPLEADO</h1>
+            <a href="/menu/empleado/">Ir al dashboard</a>
+        </div>
+        {% endif %}
+    {% else %}
+        <div class="cajaLogin">
+            <div class="superiorLogin">
+                <img class="imganenLogin" src="/static/img/logo.png">
+                <h2 class="tituloLogin">Ingresar <span>USUARIO</span></h2>
+            </div>
+
+            <form class="camposLogin" action="{% url 'login' %}" method="post">
+
+                {% csrf_token %}
+
+                <input type="text" name="username" placeholder="&#128100; Nombre" required autofocus>
+                <input type="password" name="password" placeholder="&#X1F512; Contraseña" required>
+                <input class="campoIngresar" type="submit" value="Ingresar">
+                <a class="noEntro" href='/'>Volver Al Inicio</a>
+                <a class="ret-index" href="/">FGA</a>
+
+            </form>
+
+        </div>
+
+    {% endif %}
+
+</body>
+</html>
