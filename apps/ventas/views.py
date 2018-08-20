@@ -72,22 +72,26 @@ def terminarVenta(request):
     precio = request.GET.get('precio')
     cantidad = request.GET.get('cantidad')
     total = request.GET.get('total')
+    if cantidad == None:
+        cantidad = 1
     ultimaVenta = VentaRapida.objects.last()
-    ultimaVenta.precio = precio
-    ultimaVenta.cantidad = cantidad
-    ultimaVenta.total = total
-    ultimaVenta.save()
-    RestarStockLocal(ultimaVenta.local, ultimaVenta.producto, cantidad)
+    if (ultimaVenta):
+        ultimaVenta.precio = precio
+        ultimaVenta.cantidad = cantidad
+        ultimaVenta.total = total
+        ultimaVenta.save()
+        RestarStockLocal(ultimaVenta.local, ultimaVenta.producto, cantidad)
     return render(request, 'ventas/busqueda.html')
 
 def vender(request):
     local = request.GET.get('local')
     codigo = request.GET.get('codigo')
     producto = StockLocal.objects.filter( local= local, producto=codigo)
-    nuevo = VentaRapida()
-    nuevo.local = Local.objects.get(pk=local)
-    nuevo.producto = StockLocal.objects.get(producto=codigo, local=local)
-    nuevo.save()
+    if (producto):
+        nuevo = VentaRapida()
+        nuevo.local = Local.objects.get(pk=local)
+        nuevo.producto = StockLocal.objects.get(producto=codigo, local=local)
+        nuevo.save()
 
     return render(request, 'ventas/encontrado.html',
                  {'productos':producto})
@@ -96,10 +100,12 @@ def vender(request):
 def RestarStockLocal(local, producto, cantidad):
     productoStock = Stock.objects.filter(codigo=producto)
     for stock in productoStock:
+        print(stock.cantidad)
         cod = stock.codigo
         stock.cantidad = stock.cantidad - int(cantidad)
         stock.save()
 
+    productoLocal = StockLocal.objects.filter(producto=cod, local=local)
     for pro in productoLocal:
         pro.cantidad = pro.cantidad - int(cantidad)
         pro.save()

@@ -9,6 +9,3 @@ class RegistratUsuario(CreateView):
     model = Usuario
     fields = ['nombre', 'apellido', 'cedula', 'email', 'password']
     success_url = '/usuarios/'
-
-class Login(View):
-    form_class =

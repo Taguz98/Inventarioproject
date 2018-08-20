@@ -159,7 +159,8 @@ def ActualizarStock(id_ingreso, local_ingreso):
     for p in DetalleIngreso.objects.filter(id_ingreso=id_ingreso):
         productos = DetalleIngreso.objects.filter(id_ingreso=id_ingreso, producto=p.producto.id)
         for producto in productos:
-            if not Stock.objects.filter(producto=producto, precio_venta=producto.precio_venta):
+            stock = Stock.objects.filter(producto=producto.producto, precio_venta=producto.precio_venta)
+            if not stock:
                 #Haciendo un codigo dinamico
                 codigo_generado = User.objects.make_random_password(length=8, allowed_chars='123456789')
                 print(codigo_generado)

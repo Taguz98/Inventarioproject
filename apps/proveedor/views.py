@@ -11,6 +11,7 @@ class IngresarProveedor(CreateView):
     form_class = ProveedorForm
     success_url = '/proveedor/'
 
+
 class Proveedores(ListView):
     model = Proveedor
     queryset = Proveedor.objects.all()

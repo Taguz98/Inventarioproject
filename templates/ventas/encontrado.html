@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="/static/css/estiloListas.css">
+    <link rel="stylesheet" href="/static/css/ventas/venta.css">
   </head>
   <body onload="anadir(); multiplicar();">
 
-    <h2>LO LOGREE!!!!</h2>
-    <table>
+    <h2>Fin de Venta</h2>
+    <table class="tabla">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -30,21 +32,27 @@
       </tbody>
     </table>
 
-    <div class="" onchange="actualizar(); multiplicar();">
-      <h3>Selecione el precio:</h3>
-      <label for="">Precio normal: </label> <input type="radio" name="opcion" value="1" id="precioNormal" checked="checked">
-      <label for="">Precio descuento: </label> <input type="radio" name="opcion" value="2" id="precioDescuento">
+    <div class="caja">
+
+      <div class="seleccion" onchange="actualizar(); multiplicar();">
+        <h2>Selecione el precio:</h2>
+        <label for="">Precio normal: </label> <input type="radio" name="opcion" value="1" id="precioNormal" checked="checked">
+        <label for="">Precio descuento: </label> <input type="radio" name="opcion" value="2" id="precioDescuento">
+      </div>
+
+      <form class="opciones" action="/ventas/" method="GET">
+        <label for="">Precio:</label>
+        <input type="text" name="precio" value="" id="precioCom" onchange="multiplicar()">
+        <label for="">Cantidad:</label>
+        <input type="text" name="cantidad" value="1" id="cantidadCom" onchange="multiplicar()">
+        <label for="">Total:</label>
+        <input type="text" name="total" readonly="readonly" value="1" id="totalCom">
+        <input type="submit" name="" value="Vender">
+      </form>
+
     </div>
 
-    <form class="" action="/vender/" method="GET">
-      <label for="">Precio:</label>
-      <input type="text" name="precio" value="" id="precio" onchange="multiplicar()">
-      <label for="">Cantidad:</label>
-      <input type="text" name="cantidad" value="1" id="cantidad" onchange="multiplicar()">
-      <label for="">Total:</label>
-      <input type="text" name="total" readonly="readonly" value="1" id="total">
-      <input type="submit" name="" value="Vender">
-    </form>
+
   </body>
 
   <script type="text/javascript">
@@ -56,7 +64,7 @@
       var precio_descuento = document.getElementById("precio_descuento").innerHTML;
       document.getElementById("precioDescuento").value = precio_descuento;
 
-      document.getElementById("precio").value = precio_normal;
+      document.getElementById("precioCom").value = precio_normal;
     }
 
     function actualizar(){
@@ -66,15 +74,15 @@
       }else if(document.getElementById("precioDescuento").checked){
         precio = document.getElementById("precioDescuento").value;
       }
-      document.getElementById("precio").value = precio;
+      document.getElementById("precioCom").value = precio;
       console.log(precio);
     }
 
     function multiplicar(){
-      var precio = document.getElementById("precio").value;
-      var cantidad = document.getElementById("cantidad").value;
+      var precio = document.getElementById("precioCom").value;
+      var cantidad = document.getElementById("cantidadCom").value;
       var total = precio * cantidad;
-      document.getElementById("total").value = total;
+      document.getElementById("totalCom").value = total;
     }
   </script>
 </html>

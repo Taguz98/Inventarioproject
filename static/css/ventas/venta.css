@@ -1,0 +1,41 @@
+
+.caja{
+  display: block;
+  background: #ccc;
+  width: 80%;
+  margin: 150px auto ;
+}
+
+.seleccion{
+  text-align: center;
+}
+
+.selecccion h2{
+  color: #000;
+}
+
+input, label{
+  display: inline;
+  width: 10%;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+.opciones{
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
+
+label{
+    padding-left: 5px;
+    margin-bottom: 15px;
+}
+
+input{
+  padding: 20px;
+  border: 1px solid
+  rgba(0, 0, 0, 0.3);
+  background: #D1E1D1;
+  margin-bottom: 30px;
+}

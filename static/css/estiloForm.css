@@ -78,7 +78,7 @@ select option{
 }
 
 .formEnviar{
-    background: #000; 
+    background: #000;
     color: #ccc;
     padding: 10px 10px;
     cursor: pointer;
@@ -113,10 +113,10 @@ select:focus{
 
 
 .error{
-  display: block; 
+  display: block;
   margin: auto;
-  padding: 20px; 
-  background: #ccc; 
+  padding: 20px;
+  background: #ccc;
 }
 
 .error a{
@@ -129,7 +129,7 @@ select:focus{
 }
 
 .error a:hover{
-  color: orange; 
+  color: orange;
 }
 
 /*Notificacion*/
@@ -137,15 +137,15 @@ select:focus{
 .noti{
   display: block;
   position: relative;
-  background: #ccc; 
+  background: #ccc;
 }
 
-.noti h1{ 
+.noti h1{
   text-align: center;
-  color: white; 
+  color: white;
 }
 
 .noti a{
-  text-decoration: none; 
-  font-size: 15px; 
+  text-decoration: none;
+  font-size: 15px;
 }

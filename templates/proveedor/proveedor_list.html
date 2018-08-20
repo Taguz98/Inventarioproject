@@ -1,11 +1,15 @@
-{% extends "base.html" %}
+{% extends "base/listar.html" %}
 {% block title %}
   Lista Proveedores
 {% endblock %}
 
 {% block main %}
-  <h1>Lista de proveedores</h1>
-  <table>
+  <h2>Lista de proveedores</h2>
+  <div class="menu">
+      <a href="/proveedor/ingresar/">Ingresar proveedor</a>
+  </div>
+
+  <table class="tabla">
     <thead>
       <tr>
         <th>ID</th>

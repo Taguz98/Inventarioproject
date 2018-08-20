@@ -1,13 +1,16 @@
-{% extends "base.html" %}
+{% extends "base/listar.html" %}
 
 {% block title %}
   Lista Cuentas
 {% endblock %}
 
 {% block main %}
-  <h1>Lista de Cuentas</h1>
+  <h2>Lista de Cuentas</h2>
+  <div class="menu">
+    <a href="/proveedor/cuentas/">Ingresar cuenta</a>
+  </div>
 
-  <table>
+  <table class="tabla">
     <thead>
       <tr>
         <th>ID</th>

@@ -1,0 +1,116 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+h2{
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+}
+
+body{
+  background: #113A52;
+}
+
+.form{
+  display: block;
+  margin: 10px 40px;
+  border: 1px solid #000;
+  padding: 20px;
+  background: #ccc;
+  text-align: center;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.6);
+
+}
+
+.form label{
+  font-size: 20px;
+}
+
+.ingresos{
+  margin: 10px 40px;
+  border: 1px solid #000;
+  padding: 20px;
+  background: #ccc;
+  text-align: center;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.6);
+
+}
+
+.botones{
+  padding: 5px 10px;
+  text-align: center;
+}
+.botones input:hover{
+  background: #000;
+  border-radius: 20%;
+  cursor: pointer;
+  color: #fff;
+}
+
+
+.botones input{
+  transition: 1s;
+  border: none;
+  font-size: 25px;
+}
+
+.botones a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  padding: 10px;
+  transition: 1s;
+  font-size: 30px;
+}
+
+
+.botones a:hover{
+  color: #fff;
+}
+
+a{
+  text-decoration: none;
+}
+
+.titulo{
+  text-align: center;
+  color: green;
+}
+
+.subtitulo{
+  text-align: left;
+  margin: 10px;
+  color: green;
+}
+
+.encabezado{
+  padding: 5px;
+  border: 1px solid #000;
+}
+
+/*Quitamos las fechitas del lado derecho*/
+input[type=number]{
+  -moz-appearance: textfield;
+}
+
+.encabezado label, input{
+  margin: 10px auto;
+  font-size: 20px;
+}
+
+select{
+  padding: 10px;
+  font-size: 20px;
+}
+
+input{
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.detalle{
+  align-content: center;
+  border: 1px solid #000;
+}

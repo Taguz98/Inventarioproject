@@ -25,10 +25,6 @@ from apps.productos.views import StockLista
 from apps.local.views import index, StockLocales, StockLocalPrincipal,\
     StockLocalTerminal
 
-from apps.ventas.views import vender, terminarVenta, VentasRapidas
-
-#Pruebas para vender
-
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -37,16 +33,11 @@ urlpatterns = [
     url('^proveedor/', include('apps.proveedor.urls')),
     url('^productos/', include('apps.productos.urls')),
     url('^ventas/', include('apps.ventas.urls')),
-    #Prueba Ventas
-    url('^locales/', include('apps.local.urls')),
+    #Urls para vender
+    url('^ventas/', include('apps.ventas.urls')),
 
     #Urls para stock
     url('^stock/$', StockLista.as_view(), name='Stock'),
-
-    #Urls para vender
-    url('^vender/$', vender, name='Vender'),
-    url('^ventas/$', VentasRapidas.as_view(), name='Ventas'),
-    url('^vender/terminar/$',terminarVenta, name='Detalles ventas'),
 
     #Urls para consultar stock
     url('^stock/locales/$', StockLocales.as_view(), name='Stock general'),

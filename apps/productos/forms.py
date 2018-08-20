@@ -53,8 +53,7 @@ class IngresoForm(forms.ModelForm):
     descripcion = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Descripcion ingreso',
                 'minlength':5,'maxlength':200,
-                'size':70}),
-        label='Descripcion:')
+                'size':70}))
 
 #Size es para hacer el input mas grande
     class Meta:

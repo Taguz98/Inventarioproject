@@ -1,20 +1,20 @@
-{% extends "base.html" %}
+{% extends "base/ingresos.html" %}
 
 {% block title %}
   Ingreso
 {% endblock %}
 
 {% block main %}
-  <form class="" method="post">
+  <form class="tabla" method="post">
 
-    <h1>Ingreso</h1>
+    <h2>Ingreso</h2>
     {% csrf_token %}
 
-    <div class="">
+    <div class="form">
       {{ form.as_table }}
     </div>
 
-    <div class="">
+    <div class="botones">
       <input type="submit" value="Ingresar">
       <a href="/ingresos/">Ingresos</a>
     </div>
@@ -22,15 +22,10 @@
     <h2>Detalle ingreso</h2>
 
     {{ formset.management_form }}
-    <label for="">Selecione un producto:</label>
-    <label for="">Cantidad:</label>
-    <label for="">Precio compra:</label>
-    <label for="">Precio venta:</label>
-    <label for="">Precio descuento:</label>
-    <br>
 
-
+    <div class="ingresos">
       {% for form in formset %}
+
         <!--Aqui podria agregar mesajes de error pero
             pereza -->
 
@@ -44,9 +39,10 @@
 
         {{ form.precio_descuento }}
 
-        <br>
 
       {% endfor %}
+    </div>
+
 
 
   </form>
